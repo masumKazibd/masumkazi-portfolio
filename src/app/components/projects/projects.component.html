@@ -1,16 +1,20 @@
-    <section id="projects" class="py-20 bg-white">
+<section id="projects" class="py-24 bg-slate-50">
       <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Featured Projects</h2>
+        <div class="text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-bold text-slate-900">Featured Projects</h2>
+          <p class="text-lg text-slate-500 mt-4">A selection of my recent work.</p>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div *ngFor="let project of projects" class="bg-gray-50 rounded-lg shadow-lg overflow-hidden">
-            <img [src]="project.image" alt="{{ project.title }}" class="w-full h-56 object-cover">
+          <div *ngFor="let project of projects" class="bg-white rounded-lg shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition-shadow duration-300">
             <div class="p-6">
-              <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2">{{ project.title }}</h3>
-              <p class="text-gray-600 mb-4">{{ project.description }}</p>
-              <p class="text-sm text-gray-500 mb-4"><strong>Tech:</strong> {{ project.techStack }}</p>
-              <div class="flex space-x-4">
-                <a [href]="project.githubLink" target="_blank" class="text-blue-600 hover:underline">GitHub</a>
-                <a [href]="project.demoLink" target="_blank" class="text-blue-600 hover:underline">Live Demo</a>
+              <h3 class="text-xl font-bold text-slate-800 mb-2">{{ project.title }}</h3>
+              <p class="text-slate-600 mb-4 h-16">{{ project.description }}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                 <span *ngFor="let tech of project.techStack" class="text-xs bg-sky-100 text-sky-800 px-2 py-1 rounded-md">{{ tech }}</span>
+              </div>
+              <div class="flex items-center space-x-4 mt-auto">
+                <a *ngIf="project.liveLink" [href]="project.liveLink" target="_blank" class="text-sky-600 hover:underline font-semibold">Live Demo</a>
+                <a *ngIf="project.codeLink" [href]="project.codeLink" target="_blank" class="text-slate-600 hover:underline font-semibold">View Code</a>
               </div>
             </div>
           </div>

@@ -11,28 +11,32 @@ import { Component } from '@angular/core';
 export class ProjectsComponent {
 projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A fully functional e-commerce site with product catalogs, shopping cart, and checkout.',
-      image: 'assets/images/projects/project1.webp',
-      techStack: 'Angular, Node.js, Express, MongoDB',
-      githubLink: '#',
-      demoLink: '#'
+      title: 'CRM for ISP',
+      description: 'A Customer Relationship Management system for an ISP, built with a modern stack.',
+      techStack: ['Angular', '.Net Core'],  
+      liveLink: '',
+      codeLink: 'https://github.com/masumKazibd/CRM-ISP-Angular'
     },
     {
-      title: 'Task Management App',
-      description: 'A Kanban-style task management application to organize workflows and improve productivity.',
-      image: 'assets/images/projects/project2.webp',
-      techStack: 'Angular, Firebase, Tailwind CSS',
-      githubLink: '#',
-      demoLink: '#'
+      title: 'Quizfolio',  
+      description: 'A quiz application with Salesforce integration for lead capture and management.',
+      techStack: ['.Net Core MVC', 'Salesforce'], 
+      liveLink: 'https://quizfolio.somee.com/',  
+      codeLink: 'https://github.com/masumkazibd/QuizFolio'
     },
     {
-      title: 'Portfolio Website',
-      description: 'This very portfolio, built to showcase my skills and projects using modern web tech.',
-      image: 'assets/images/projects/project3.webp',
-      techStack: 'Angular 17, Tailwind CSS, Netlify',
-      githubLink: '#',
-      demoLink: '#'
+      title: 'Candidate Management System',
+      description: 'A system to manage job candidates, built with a separate front-end and back-end.',
+      techStack: ['Angular', '.Net Core'], 
+      liveLink: '',
+      codeLink: 'https://github.com/masumkazibd/Candidate-management-angular'
+    },
+    {
+      title: 'Tour Management System', 
+      description: 'A web application for managing tours and bookings.',
+      techStack: ['ASP.NET MVC-5'],
+      liveLink: '',
+      codeLink: 'https://github.com/masumkazibd/tour-management'
     }
   ];
 }
