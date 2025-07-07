@@ -37,6 +37,20 @@ projects = [
       techStack: ['ASP.NET MVC-5'],
       liveLink: '',
       codeLink: 'https://github.com/masumkazibd/tour-management'
-    }
+    },
+    {
+      title: 'Daily Discipline SPA', 
+      description: 'A web application for improving your productivity.',
+      techStack: ['JavaScript', 'Firebase'],
+      liveLink: 'https://dailydiscipline.netlify.app/',
+      codeLink: 'https://github.com/masumKazibd/daily-routine-spa'
+    },
+    {
+      title: 'Mini Account Management System', 
+      description: 'A web application for managing accounts with role & right manage.',
+      techStack: ['ASP.NET core', 'Store Procedure'],
+      liveLink: 'https://accountms.somee.com/',
+      codeLink: 'https://github.com/masumKazibd/MiniAccountManagement'
+    },
   ];
 }
