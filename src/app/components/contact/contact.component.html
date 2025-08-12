@@ -1,43 +1,51 @@
 <section id="contact" class="py-24 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-bold text-slate-900">Get In Touch</h2>
-          <p class="text-lg text-slate-500 mt-4">Feel free to reach out for collaborations or just a friendly chat.</p>
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl lg:text-5xl font-bold text-slate-900">Get In Touch</h2>
+      <p class="text-lg text-slate-500 mt-4">Feel free to reach out for collaborations or just a friendly chat.</p>
+    </div>
+
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
+      <div class="space-y-4">
+        <div>
+          <h3 class="text-lg font-semibold text-slate-800">Email Address</h3>
+          <a href="mailto:contact.masumkazi&#64;gmail.com"
+            class="text-slate-600 hover:text-sky-600">contact.masumkazi&#64;gmail.com</a>
         </div>
-        
-        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
-            <div class="space-y-4">
-                <div>
-                    <h3 class="text-lg font-semibold text-slate-800">Email Address</h3>
-                    <a href="mailto:contact.masumkazi&#64;gmail.com" class="text-slate-600 hover:text-sky-600">contact.masumkazi&#64;gmail.com</a>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-slate-800">Phone</h3>
-                    <p class="text-slate-600">+8801645119083</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-slate-800">Location</h3>
-                    <p class="text-slate-600">Dhaka, Bangladesh</p>
-                </div>
-            </div>
-            
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
-                <div>
-                  <label for="name" class="sr-only">Name</label>
-                  <input type="text" id="name" formControlName="name" placeholder="Your Name" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
-                </div>
-                <div>
-                  <label for="email" class="sr-only">Email</label>
-                  <input type="email" id="email" formControlName="email" placeholder="Your Email" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
-                </div>
-                <div>
-                  <label for="message" class="sr-only">Message</label>
-                  <textarea id="message" formControlName="message" rows="4" placeholder="Your Message" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500"></textarea>
-                </div>
-                <button type="submit" [disabled]="contactForm.invalid" class="w-full bg-sky-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-sky-700 transition-colors disabled:bg-slate-400">
-                  Send Message
-                </button>
-            </form>
+        <div>
+          <h3 class="text-lg font-semibold text-slate-800">Phone</h3>
+          <p class="text-slate-600">+8801645119083</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-slate-800">Location</h3>
+          <p class="text-slate-600">Dhaka, Bangladesh</p>
         </div>
       </div>
-    </section>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div>
+          <label for="name" class="sr-only">Name</label>
+          <input type="text" id="name" formControlName="name" placeholder="Your Name"
+            class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+        </div>
+        <div>
+          <label for="email" class="sr-only">Email</label>
+          <input type="email" id="email" formControlName="email" placeholder="Your Email"
+            class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+        </div>
+        <div>
+          <label for="message" class="sr-only">Message</label>
+          <textarea id="message" formControlName="message" rows="4" placeholder="Your Message"
+            class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500"></textarea>
+        </div>
+        <button type="submit" [disabled]="contactForm.invalid || submissionStatus === 'submitting'"
+          class="w-full bg-sky-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-sky-700 transition-colors disabled:bg-slate-400">
+          <span *ngIf="submissionStatus === 'idle'">Send Message</span>
+          <span *ngIf="submissionStatus === 'submitting'">Sending...</span>
+          <span *ngIf="submissionStatus === 'success'">Message Sent!</span>
+          <span *ngIf="submissionStatus === 'error'">Sending Failed</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
