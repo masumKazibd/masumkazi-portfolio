@@ -1,41 +1,31 @@
-<section id="skills" class="py-24 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-bold text-slate-900">Technical Expertise</h2>
-          <p class="text-lg text-slate-500 mt-4">The tools and technologies I work with.</p>
+<section id="skills" class="py-24 bg-slate-50">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl lg:text-5xl font-bold text-slate-900">Technical Expertise</h2>
+      <p class="text-lg text-slate-500 mt-4">The tools and technologies I work with.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div *ngFor="let category of skillCategories; let i = index"
+        class="bg-white p-6 rounded-xl shadow-md border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+        <div class="flex items-center gap-4 mb-4">
+          <div class="bg-sky-100 p-2 rounded-lg">
+            <svg [innerHTML]="getIcon(i)" class="w-6 h-6 text-sky-600" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor"></svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800">{{ category.title }}</h3>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="space-y-8">
-            <div *ngFor="let category of skillCategories.slice(0, 2)">
-              <h3 class="text-xl font-semibold text-slate-800 mb-4">{{ category.title }}</h3>
-              <div class="flex flex-wrap gap-2">
-                <span *ngFor="let skill of category.skills" class="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">
-                  {{ skill }}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="space-y-8">
-             <div *ngFor="let category of skillCategories.slice(2, 4)">
-              <h3 class="text-xl font-semibold text-slate-800 mb-4">{{ category.title }}</h3>
-              <div class="flex flex-wrap gap-2">
-                <span *ngFor="let skill of category.skills" class="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">
-                  {{ skill }}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="space-y-8">
-             <div *ngFor="let category of skillCategories.slice(4, 7)">
-              <h3 class="text-xl font-semibold text-slate-800 mb-4">{{ category.title }}</h3>
-              <div class="flex flex-wrap gap-2">
-                <span *ngFor="let skill of category.skills" class="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">
-                  {{ skill }}
-                </span>
-              </div>
-            </div>
-          </div>
+        <div class="flex flex-wrap gap-2">
+          <span *ngFor="let skill of category.skills"
+            class="bg-slate-200 text-slate-800 text-sm font-semibold px-3 py-1 rounded-md">
+            {{ skill }}
+          </span>
         </div>
       </div>
-    </section>
+
+    </div>
+  </div>
+</section>
