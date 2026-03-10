@@ -11,8 +11,14 @@
     <!-- Top 3 Offers Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
       <div *ngFor="let offer of topOffers"
-        [ngClass]="getColorClasses(offer.color).bg + ' ' + getColorClasses(offer.color).border"
-        class="rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col p-6 border-t-4">
+        [ngClass]="getColorClasses(offer.color).bg + ' ' + getColorClasses(offer.color).border + ' ' + (isExpired(offer) ? 'opacity-60 grayscale' : '')"
+        class="rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col p-6 border-t-4 relative">
+        
+        <!-- Expired Badge -->
+        <div *ngIf="isExpired(offer)" class="absolute top-4 right-4 bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full">
+          EXPIRED
+        </div>
+        
         <div class="mb-4 flex items-start justify-between">
           <svg class="w-10 h-10" [ngClass]="getColorClasses(offer.color).text" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             [innerHTML]="getSafeIcon(offer.icon)"></svg>
@@ -24,6 +30,11 @@
         <p class="text-sm text-slate-600 mb-3">{{ offer.company }}</p>
         <p class="text-slate-600 mb-4 flex-grow">{{ offer.description }}</p>
         
+        <div *ngIf="offer.referenceName" class="mb-4 p-3 bg-purple-100 rounded-lg">
+          <p class="text-xs text-purple-600 font-semibold uppercase">Reference Name</p>
+          <p class="text-lg font-bold text-purple-700">{{ offer.referenceName }}</p>
+        </div>
+        
         <div class="mb-5">
           <p *ngIf="offer.salary" class="font-semibold text-slate-800">{{ offer.salary }}</p>
           <p *ngIf="offer.price" class="font-semibold text-slate-800">{{ offer.price }}</p>
@@ -32,15 +43,23 @@
           </div>
         </div>
         
-        <a [routerLink]="offer.actionLink"
+        <a *ngIf="!offer.isExternal && !isExpired(offer)" [routerLink]="offer.actionLink"
           class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300 text-center">
           {{ offer.actionLabel }}
         </a>
+        <a *ngIf="offer.isExternal && !isExpired(offer)" [href]="offer.actionLink" target="_blank" rel="noopener noreferrer"
+          class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300 text-center">
+          {{ offer.actionLabel }}
+        </a>
+        <button *ngIf="isExpired(offer)" disabled
+          class="inline-block bg-gray-400 text-white font-semibold px-6 py-2 rounded-lg cursor-not-allowed text-center opacity-50">
+          EXPIRED
+        </button>
       </div>
     </div>
 
     <!-- View All Offers Button -->
-    <div class="text-center">
+    <div class="text-center" *ngIf="hasMoreOffers()">
       <a [routerLink]="'/offers'"
         class="inline-block bg-gradient-to-r from-slate-700 to-slate-900 text-white font-semibold px-8 py-3 rounded-lg hover:shadow-lg transition-all duration-300">
         View All Offers & Opportunities →

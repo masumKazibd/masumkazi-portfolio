@@ -11,9 +11,16 @@ import { Component } from '@angular/core';
 export class ExperienceComponent {
   experiences = [
     {
+      title: 'Software Engineer',
+      company: 'PlayOn24',
+      period: 'Dec 2025 - Present',
+      description:
+        'Contributing to a .NET Core-based HRM, Factory & POS ERP, focusing on full-stack development and testing'
+    },
+    {
       title: 'Junior Software Engineer',
       company: 'PlacoVU, Inc.',
-      period: 'Feb 2024 - Present',
+      period: 'Feb 2024 - Nov 2025',
       description:
         'Contributing to a .NET Core-based LMS & EHR, focusing on full-stack development and implementing automated testing with Playwright, BrowserStack, LeapWork and Appium.'
     },
