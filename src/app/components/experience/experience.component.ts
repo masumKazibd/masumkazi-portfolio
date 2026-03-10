@@ -32,4 +32,45 @@ export class ExperienceComponent {
         'Managed cloud infrastructure, server administration, and provided technical support while handling critical data management tasks.'
     }
   ];
+  educationList: Education[] = [
+    {
+      title: 'Bachelor of Science, Computer Science',
+      institution: 'Southeast University',
+      period: '2023 - 2027'
+    },
+    {
+      title: 'Diploma in Engineering, Computer Technology',
+      institution: 'Chandpur Polytechnic Institute',
+      period: '2018 - 2022'
+    },
+    {
+      title: 'Industrial Attachment, Node.js',
+      institution: 'PeopleNTech Limited',
+      period: '2022 - 2023'
+    }
+  ];
+
+  volunteeringList: Volunteering[] = [
+    {
+      title: 'FNV',
+      organization: 'UNDP Bangladesh',
+      period: 'July 2025 - Present'
+    },
+    {
+      title: 'Google Local Guides',
+      organization: 'Google Maps',
+      period: 'March 2020 - Present'
+    }
+  ];
+}
+interface Education {
+  title: string;
+  institution: string;
+  period: string;
+}
+
+interface Volunteering {
+  title: string;
+  organization: string;
+  period: string;
 }
