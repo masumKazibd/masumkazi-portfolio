@@ -5,8 +5,8 @@ import nodemailer from 'nodemailer';
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD
+    user: process.env['GMAIL_USER'],
+    pass: process.env['GMAIL_APP_PASSWORD']
   }
 });
 
@@ -57,7 +57,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
     // Send email to visitor
     await transporter.sendMail({
-      from: process.env.GMAIL_USER,
+      from: process.env['GMAIL_USER'],
       to: visitorEmail,
       subject: `Your Call Booking Confirmation - ${bookingDate}`,
       html: visitorEmailContent
@@ -91,13 +91,13 @@ export default async (req: VercelRequest, res: VercelResponse) => {
         </tr>
       </table>
       
-      <p><a href="${process.env.SITE_URL}/schedule-management">View all bookings</a></p>
+      <p><a href="${process.env['SITE_URL']}/schedule-management">View all bookings</a></p>
     `;
 
     // Send email to admin
     await transporter.sendMail({
-      from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER, // Send to yourself
+      from: process.env['GMAIL_USER'],
+      to: process.env['GMAIL_USER'], // Send to yourself
       subject: `New Booking: ${visitorName} - ${bookingDate}`,
       html: adminEmailContent
     });
