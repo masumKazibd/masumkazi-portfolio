@@ -102,14 +102,14 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       html: adminEmailContent
     });
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Emails sent successfully',
       bookingId
     });
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: 'Failed to send email',
       details: error instanceof Error ? error.message : 'Unknown error'
